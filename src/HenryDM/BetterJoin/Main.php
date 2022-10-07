@@ -68,8 +68,16 @@ class Main extends PluginBase implements Listener {
 #    JOIN SPAWN 
 # =================        
 
-        if($this->getConfig()->get("join-tp-spawn") === true) {
+        if($this->getConfig()->get("join-teleport-spawn") === true) {
             $event->getPlayer()->teleport($this->getServer()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
+        }
+
+# =================
+#    JOIN HEALTH
+# =================        
+
+        if($this->getConfig()->get("join-health") === true) {
+            $player->setHealth(20);
         }
 
 # =================
@@ -77,14 +85,6 @@ class Main extends PluginBase implements Listener {
 # =================        
 
         if($this->getConfig()->get("join-food") === true) {
-            $player->setHealth(20);
-        }
-
-# =================
-#    JOIN FEED
-# =================        
-
-        if($this->getConfig()->get("join-feed") === true) {
             $player->getHungerManager()->setFood(20);
         }
 

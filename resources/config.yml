@@ -22,12 +22,12 @@ join-message-text: "&aWelcome to server {player}"
 # ===================
 #     JOIN UTILS
 # ===================
-# 1. 'join-hearth' fills the player's heart when he enters the game!
+# 1. 'join-health' fills the player's heart when he enters the game!
 # 2. 'join-feed' fills the player's feed when he enters the game!
 # 3. 'join-teleport-spawn' teleport the player to the default spawn of the server whenever entering the game!
 
-join-hearth: false
-join-feed: false
+join-health: false
+join-food: false
 join-teleport-spawn: false
 
 # ===================
