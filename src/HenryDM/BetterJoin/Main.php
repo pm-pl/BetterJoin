@@ -85,7 +85,7 @@ class Main extends PluginBase implements Listener {
 # =================        
 
         if($this->getConfig()->get("join-feed") === true) {
-            $player->setFood(20);
+            $player->getHungerManager()->setFood(20);
         }
 
 # =================
