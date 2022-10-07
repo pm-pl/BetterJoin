@@ -77,7 +77,7 @@ class Main extends PluginBase implements Listener {
 # =================        
 
         if($this->getConfig()->get("join-food") === true) {
-            $player->setHealth(10);
+            $player->setHealth(20);
         }
 
 # =================
@@ -85,7 +85,7 @@ class Main extends PluginBase implements Listener {
 # =================        
 
         if($this->getConfig()->get("join-feed") === true) {
-            $player->setFeed(10);
+            $player->setFood(20);
         }
 
 # =================
@@ -93,7 +93,7 @@ class Main extends PluginBase implements Listener {
 # =================        
 
         if($this->getConfig()->get("join-command") === true) {
-            $this->main->getServer()->getCommandMap()->dispatch(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), $command);
+            $this->getServer()->getCommandMap()->dispatch(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), $command);
         }
 
 # =================
@@ -101,7 +101,7 @@ class Main extends PluginBase implements Listener {
 # =================        
 
         if($this->getConfig()->get("join-sound") === true) {
-            PluginUtils::playSound($player, $this->getMain()->cfg->get("join-sound-name"), 1, 1); 
+            PluginUtils::playSound($player, $this->getConfig()->get("join-sound-name"), 1, 1); 
         }
 
 # =================
@@ -137,8 +137,8 @@ class Main extends PluginBase implements Listener {
             if($this->getConfig()->get("join-ui-exit-button") === true) {
                 $form->addButton($jueb);
             }
+            return $form;
         }
-        return $form;
 
 # =================
 #  JOIN BROADCAST
