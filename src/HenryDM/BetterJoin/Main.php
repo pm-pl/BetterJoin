@@ -10,6 +10,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\utils\Config;
 
+use pocketmine\player\Player;
 use Vecnavium\FormsUI\SimpleForm;
 use pocketmine\event\player\PlayerJoinEvent;
 use HenryDM\BetterJoin\Utils\PluginUtils;
