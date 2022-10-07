@@ -1,0 +1,82 @@
+---
+# ===================
+#     BETTER JOIN
+# ===================
+# 1. An advanced plugin to manage events when the player enters the server, the most complete!!
+# 2. If you see errors, report here: https://github.com/Henry12960/BetterJoin/issues/new
+# 3. Plugin made by Henry Thierry [HenryDM] 
+# 4. Henry's Website: https://github.com/Henry12960
+
+# ===================
+#    JOIN MESSAGE
+# ===================
+# 1. You can use popup and message in 'join-message-type'!
+# 2. You can use & to get minecraft color codes in 'join-message-text'!
+# 3. You can use {player} in 'join-message-text' to get player name.
+
+join-message: false
+join-message-type: "popup"
+
+join-message-text: "&aWelcome to server {player}"
+
+# ===================
+#     JOIN UTILS
+# ===================
+# 1. 'join-hearth' fills the player's heart when he enters the game!
+# 2. 'join-feed' fills the player's feed when he enters the game!
+# 3. 'join-teleport-spawn' teleport the player to the default spawn of the server whenever entering the game!
+
+join-hearth: false
+join-feed: false
+join-teleport-spawn: false
+
+# ===================
+#    JOIN COMMAND
+# ===================
+# 1. You can use {player} to get player name!
+
+join-command: false
+join-command-name: "give {player} stone 10"
+
+# ===================
+#     JOIN SOUND
+# ===================
+# 1. Sound Wiki: 
+# 1.1: https://www.digminecraft.com/lists/sound_list_pe.php
+
+join-sound: false
+join-sound-name: "random.levelup"
+
+# ===================
+#     JOIN TITLE
+# ===================
+# 1. You can use & to get minecraft color codes!
+
+join-title: false
+join-title-text: "&aServerName"
+join-subtitle-text: "&eServer description"
+
+# ===================
+#       JOIN UI
+# ===================
+# 1. You can use & to minecraft color codes, {player} to player name and {line} to add line! 
+
+join-ui: false
+
+join-ui-title: "&l&7JOIN UI"
+join-ui-content: "&eHello {player}!{line}{line}&bChange in config.yml"
+
+join-ui-exit-button: false
+join-ui-exit-button-text: "&cExit{line}&7Tap to exit!"
+exit-button-message-toggle: true
+join-ui-exit-button-message: "&awelcome!"
+
+# ===================
+#   JOIN BROADCAST
+# ===================
+# 1. You can use & to get minecraft color codes!
+# 2. You can use {player} to player name and {line} to add a line!
+
+join-player-broadcast: false
+join-player-broadcast-message: "&7[&a+&7] &a{player}"
+...
