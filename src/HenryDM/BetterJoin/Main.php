@@ -74,9 +74,9 @@ class Main extends PluginBase implements Listener {
 #                        JOIN ITEMS VARIABLES
 # ================================================================        
 
-        $joinitem = $this->getConfig()->cfg->get("join-items-id", []);
+        $joinitem = $this->getConfig()->get("join-items-id", []);
         $item = LegacyStringToItemParser::getInstance()->parse($joinitem);
-        $itemcount = $this->getConfig()->cfg->get("join-items-count");
+        $itemcount = $this->getConfig()->get("join-items-count");
         
 # ================================================================
 
