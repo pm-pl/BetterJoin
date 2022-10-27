@@ -79,4 +79,12 @@ join-ui-exit-button-message: "&awelcome!"
 
 join-player-broadcast: false
 join-player-broadcast-message: "&7[&a+&7] &a{player}"
+
+# ===================
+#     JOIN ITEMS
+# ===================
+
+join-items: false
+join-items-id: ["263", "266"]
+items-amount: 1
 ...
