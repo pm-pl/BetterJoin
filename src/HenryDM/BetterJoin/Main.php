@@ -13,11 +13,13 @@ use pocketmine\utils\Config;
 use pocketmine\player\Player;
 use Vecnavium\FormsUI\SimpleForm;
 use pocketmine\event\player\PlayerJoinEvent;
-use HenryDM\BetterJoin\Utils\PluginUtils;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\console\ConsoleCommandSender;
+
+use HenryDM\BetterJoin\Utils\PluginUtils;
+use pocketmine\item\LegacyStringToItemParser;
 
 class Main extends PluginBase implements Listener {  
 
@@ -28,17 +30,54 @@ class Main extends PluginBase implements Listener {
 
     public function onJoin(PlayerJoinEvent $event) {
 
-# ================================================================        
+# ================================================================
+#                        GENERAL VARIABLES
+# ================================================================ 
+
         $player = $event->getPlayer();
         $name = $player->getName();
+
+# ================================================================
+#                        JOIN MESSAGE VARIABLES
+# ================================================================ 
+
         $message = str_replace(["{player}", "{line}", "&"], [$name, "\n", "§"], $this->getConfig()->get("join-message-text"));
+
+# ================================================================
+#                        JOIN COMMAN VARIABLES
+# ================================================================      
+
         $command = str_replace(["{player}", "{&}"], [$name, "§"], $this->getConfig()->get("join-command-name"));
+
+# ================================================================
+#                        JOIN TITLE VARIABLES
+# ================================================================
+
         $title = str_replace(["&"], ["§"], $this->getConfig()->get("join-title-text"));
         $subtitle = str_replace(["&"], ["§"], $this->getConfig()->get("join-title-subtitle"));
+
+# ================================================================
+#                      JOIN BROADCAST VARIABLES
+# ================================================================ 
+
         $broadcast = str_replace(["{player}", "{line}", "&"], [$name, "\n", "§"], $this->getConfig()->get("join-player-broadcast-message"));
+
+# ================================================================
+#                      JOIN FORM VARIABLES
+# ================================================================ 
+
         $jut = str_replace(["&", "{line}"], ["§", "\n"], $this->getConfig()->get("join-ui-title"));
         $juc = str_replace(["&", "{line}", "{player}"], ["§", "\n", $name], $this->getConfig()->get("join-ui-content"));
         $jueb = str_replace(["&", "{line}"], ["§", "\n"], $this->getConfig()->get("join-ui-exit-button-text"));
+
+# ================================================================
+#                        JOIN ITEMS VARIABLES
+# ================================================================        
+
+        $joinitem = $this->getConfig()->cfg->get("join-items-id", []);
+        $item = LegacyStringToItemParser::getInstance()->parse($joinitem);
+        $itemcount = $this->getConfig()->cfg->get("join-items-count");
+        
 # ================================================================
 
 # =================
@@ -146,6 +185,14 @@ class Main extends PluginBase implements Listener {
         if($this->getConfig()->get("join-player-broadcast") === true) {
             $event->setJoinMessage("");
             $this->getServer()->broadcastMessage($broadcast);
+        }
+
+# =================
+#    JOIN ITEMS
+# =================
+         
+        if($this->getConfig()->get("join-items") === true) {
+            $player->getInventory()->addItem($item->setCount($itemcount));
         }
     }
 }
