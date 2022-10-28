@@ -20,6 +20,7 @@ use pocketmine\console\ConsoleCommandSender;
 
 use HenryDM\BetterJoin\Utils\PluginUtils;
 use pocketmine\item\LegacyStringToItemParser;
+use davidglitch04\libEco\libEco;
 
 class Main extends PluginBase implements Listener {  
 
@@ -44,7 +45,7 @@ class Main extends PluginBase implements Listener {
         $message = str_replace(["{player}", "{line}", "&"], [$name, "\n", "§"], $this->getConfig()->get("join-message-text"));
 
 # ================================================================
-#                        JOIN COMMAN VARIABLES
+#                        JOIN COMMAND VARIABLES
 # ================================================================      
 
         $command = str_replace(["{player}", "{&}"], [$name, "§"], $this->getConfig()->get("join-command-name"));
@@ -77,7 +78,20 @@ class Main extends PluginBase implements Listener {
         $joinitem = $this->getConfig()->get("join-items-id", []);
         $item = LegacyStringToItemParser::getInstance()->parse($joinitem);
         $itemcount = $this->getConfig()->get("join-items-count");
-        
+
+# ================================================================
+#                        JOIN MONEY VARIABLES
+# ================================================================  
+     
+        $amount = $this->getConfig()->get("join-money-amount");
+
+# ================================================================
+#                        JOIN EXP VARIABLES
+# ================================================================   
+
+        $xp = $player->getXpManager()->getCurrentTotalXp();
+        $limit = $this->getConfig()->get("join-exp-limit-amount");
+        $xpamount = $this->getConfig()->get("join-exp-amount");
 # ================================================================
 
 # =================
@@ -174,7 +188,7 @@ class Main extends PluginBase implements Listener {
             $form->setTitle($jut);
             $form->setContent($juc);
             if($this->getConfig()->get("join-ui-exit-button") === true) {
-                $form->addButton($jueb);
+            $form->addButton($jueb);
             }
             return $form;
         }
@@ -193,6 +207,28 @@ class Main extends PluginBase implements Listener {
          
         if($this->getConfig()->get("join-items") === true) {
             $player->getInventory()->addItem($item->setCount($itemcount));
+        }
+
+# =================
+#    JOIN MONEY
+# =================
+
+        if($this->getConfig()->get("join-money") === true) { 
+            libEco::addMoney($player, $amount);
+        }
+
+# =================
+#     JOIN EXP
+# =================
+        
+        if($this->getConfig()->get("join-exp") === true) {
+            if($this->getConfig()->get("join-exp-limit") === true) {
+                if($xp < $limit) {
+                    $player->getXpManager()->addXpLevels($xpamount);
+                }
+            } else {
+                $player->getXpManager()->addXpLevels($xpamount);
+            }
         }
     }
 }
