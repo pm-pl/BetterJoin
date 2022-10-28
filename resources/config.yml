@@ -79,4 +79,30 @@ join-ui-exit-button-message: "&awelcome!"
 
 join-player-broadcast: false
 join-player-broadcast-message: "&7[&a+&7] &a{player}"
+
+# ===================
+#     JOIN ITEMS
+# ===================
+
+join-items: false
+join-items-id: ["263", "266"]
+items-amount: 1
+
+# ===================
+#     JOIN MONEY
+# ===================
+
+join-money: false
+join-money-amount: 2
+
+# ===================
+#     JOIN EXP
+# ===================
+# 1. 'join-exp-amount' refers to exp level!
+# 2. if you set to true 'join-exp-limit' when the player has 'join-exp-limit-amount' the plugin stop the join give!
+
+join-exp: false
+join-exp-limit: true
+join-exp-limit-amount: 20
+join-exp-amount: 2
 ...
